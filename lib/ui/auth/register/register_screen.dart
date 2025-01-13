@@ -53,6 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             style: AppStyles.medium18White,
                           ),
                           CustomTextFormField(
+                            keyboardType: TextInputType.name,
                             isObscureText: false,
                             hintText: "enter your full name",
                             hintStyle: AppStyles.light18lightBlack,
@@ -70,6 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             style: AppStyles.medium18White,
                           ),
                           CustomTextFormField(
+                            keyboardType: TextInputType.phone,
                             isObscureText: false,
                             hintText: "enter your mobile number",
                             hintStyle: AppStyles.light18lightBlack,
@@ -91,6 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             style: AppStyles.medium18White,
                           ),
                           CustomTextFormField(
+                            keyboardType: TextInputType.emailAddress,
                             isObscureText: false,
                             hintText: "enter your email address",
                             hintStyle: AppStyles.light18lightBlack,
@@ -114,6 +117,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             style: AppStyles.medium18White,
                           ),
                           CustomTextFormField(
+                            keyboardType: TextInputType.visiblePassword,
                             isObscureText: true,
                             hintText: "enter your password",
                             hintStyle: AppStyles.light18lightBlack,

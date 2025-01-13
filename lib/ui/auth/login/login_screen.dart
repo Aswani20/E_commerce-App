@@ -62,6 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: AppStyles.medium18White,
                           ),
                           CustomTextFormField(
+                            keyboardType: TextInputType.text,
                             isObscureText: false,
                             hintText: "enter your name",
                             hintStyle: AppStyles.light18lightBlack,
@@ -86,6 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: AppStyles.medium18White,
                           ),
                           CustomTextFormField(
+                            keyboardType: TextInputType.visiblePassword,
                             isObscureText: true,
                             hintText: "enter your password",
                             hintStyle: AppStyles.light18lightBlack,
