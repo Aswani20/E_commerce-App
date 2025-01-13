@@ -39,6 +39,7 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_screenutil: ^5.9.3
   auto_size_text: ^3.0.0
+  flutter_native_splash: ^2.4.4
 
 dev_dependencies:
   flutter_test:
