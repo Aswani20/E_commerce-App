@@ -37,4 +37,7 @@ class AssetsManager {
   static const String shoesItemImage2 = "assets/images/items/shoes-2.png";
   static const String shoesItemImage3 = "assets/images/items/shoes-3.png";
 
+
+  static const String appBarLeading = 'assets/images/Route.png';
+
 }
