@@ -24,8 +24,9 @@ class AppStyles {
       fontSize: 20, fontWeight: FontWeight.w600, color: AppColors.primaryColor);
   static TextStyle semi24White = GoogleFonts.poppins(
       fontSize: 24, fontWeight: FontWeight.w600, color: AppColors.whiteColor);
-  static TextStyle medium14Category = GoogleFonts.poppins(
-      fontSize: 14, fontWeight: FontWeight.w500, color: AppColors.primaryDark);
+  static TextStyle medium14Category = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppColors.primaryDark);
+  static TextStyle medium14LightPrimary = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppColors.primaryDarkLight);
+  static TextStyle medium14PrimaryDark = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppColors.primaryDark);
   static TextStyle medium18Header = GoogleFonts.poppins(
       fontSize: 18, fontWeight: FontWeight.w500, color: AppColors.primaryDark);
   static TextStyle medium18White = GoogleFonts.poppins(

@@ -3,28 +3,30 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_colors.dart';
 
 class CustomTextFormField extends StatefulWidget {
-  Color filledColor;
+  Color? filledColor;
   Color borderColor;
-  TextStyle hintStyle;
-  String hintText;
+  TextStyle? hintStyle;
+  String? hintText;
   Widget? label;
   TextStyle? labelStyle;
   Widget? prefixIcon;
   Widget? suffixIcon;
-  TextEditingController controller;
-  String? Function(String?) validator;
-  TextInputType keyboardType;
+  TextEditingController? controller;
+  String? Function(String?)? validator;
+  TextInputType? keyboardType;
   bool isObscureText;
   bool isPassword;
+  TextStyle? textStyle;
 
   CustomTextFormField({
     super.key,
-    required this.controller,
-    required this.validator,
-    required this.isObscureText,
-    required this.hintText,
-    required this.hintStyle,
-    required this.isPassword,
+    this.controller,
+    this.validator,
+    this.isObscureText = false,
+    this.hintText,
+    this.hintStyle,
+    this.textStyle,
+    this.isPassword = false,
     this.label,
     this.labelStyle,
     this.prefixIcon,
@@ -44,6 +46,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return Padding(
       padding: EdgeInsets.only(top: 12.h, bottom: 20.h),
       child: TextFormField(
+        style: widget.textStyle,
         obscureText: widget.isObscureText,
         keyboardType: widget.keyboardType,
         controller: widget.controller,

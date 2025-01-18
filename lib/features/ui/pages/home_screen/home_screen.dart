@@ -33,6 +33,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          leadingWidth: 90.w,
+          leading:  Image.asset(
+            AppAssets.routeLogo,
+          ),
+        ),
         body: bodyList[selectedIndex],
         bottomNavigationBar: ClipRRect(
           borderRadius: BorderRadius.only(

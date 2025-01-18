@@ -19,15 +19,6 @@ class HomeTab extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                AppAssets.routeLogo,
-                height: 26.h,
-                width: 66.w,
-                fit: BoxFit.fill,
-              ),
-              SizedBox(
-                height: 18.h,
-              ),
               Row(
                 children: [
                   Expanded(child: _buildSearchTextField()),
