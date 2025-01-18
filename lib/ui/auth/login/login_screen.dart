@@ -81,7 +81,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   return 'Invalid ex: Julia Or Laasya_Setty';
                                 }
                                 return null;
-                                return null;
                               },
                             ),
                             Text(
