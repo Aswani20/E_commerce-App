@@ -1,17 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:e_commerce_app/ui/auth/register/register_screen.dart';
-import 'package:e_commerce_app/utils/app_colors.dart';
-import 'package:e_commerce_app/utils/app_styles.dart';
-import 'package:e_commerce_app/utils/assets_manager.dart';
-import 'package:e_commerce_app/utils/custom_elevated_button.dart';
-import 'package:e_commerce_app/utils/custom_text_form_field.dart';
+import 'package:e_commerce_app/core/utils/app_assets.dart';
+import 'package:e_commerce_app/core/utils/app_colors.dart';
+import 'package:e_commerce_app/core/utils/app_routes.dart';
+import 'package:e_commerce_app/core/utils/app_styles.dart';
+import 'package:e_commerce_app/core/utils/custom_elevated_button.dart';
+import 'package:e_commerce_app/core/utils/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const String routeName = "login_screen";
-  LoginScreen({super.key});
 
+class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -33,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: EdgeInsets.only(
                     top: 91.h, bottom: 87.h, left: 97.w, right: 97.w),
                 child: Image.asset(
-                  AssetsManager.appBarLeading,
+                  AppAssets.appBarLeading,
                 ),
               ),
               Padding(
@@ -67,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               keyboardType: TextInputType.text,
                               isObscureText: false,
                               hintText: "enter your name",
-                              hintStyle: AppStyles.light18lightBlack,
+                              hintStyle: AppStyles.light18HintText,
                               filledColor: AppColors.whiteColor,
                               controller: userNameController,
                               validator: (value) {
@@ -92,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               keyboardType: TextInputType.visiblePassword,
                               isObscureText: true,
                               hintText: "enter your password",
-                              hintStyle: AppStyles.light18lightBlack,
+                              hintStyle: AppStyles.light18HintText,
                               filledColor: AppColors.whiteColor,
                               controller: passwordController,
                               validator: (value) {
@@ -117,28 +115,21 @@ class _LoginScreenState extends State<LoginScreen> {
                             CustomElevatedButton(text: "Login", onPressed: (){login();}),
                             Padding(
                               padding: EdgeInsets.only(top: 30.h),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    overflow: TextOverflow.ellipsis,
-                                    'Don’t have an account? ',
-                                    style: AppStyles.semi16white,
-                                    maxLines: 1,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pushReplacementNamed(context, AppRoutes.registerRoute);
+                                  setState(() {
+                                  },);
+                                },
+                                child: Expanded(
+                                  child: Text(
+                                    'Don’t have an account? Create Account',
+                                    style: AppStyles.medium18White,
+                                    textAlign: TextAlign.center,
                                   ),
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.pushReplacementNamed(context, RegisterScreen.routeName);
-                                      setState(() {
-                                      },);
-                                    },
-                                    child: Text(
-                                      'Create Account',
-                                      style: AppStyles.semi16white,
-                                    ),
-                                  )
-                                ],
-                              ),
+                                ),
+                              )
+
                             )
                           ],
                         ),
@@ -156,6 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void login(){
     if(formKey.currentState!.validate()){
+      Navigator.pushReplacementNamed(context, AppRoutes.homeRoute);
       print("login Successfully");
     }
   }
