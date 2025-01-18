@@ -121,12 +121,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                   setState(() {
                                   },);
                                 },
-                                child: Expanded(
-                                  child: Text(
-                                    'Don’t have an account? Create Account',
-                                    style: AppStyles.medium18White,
-                                    textAlign: TextAlign.center,
-                                  ),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        'Don’t have an account? Create Account',
+                                        style: AppStyles.medium18White,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               )
 

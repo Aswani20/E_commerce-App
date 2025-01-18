@@ -145,17 +145,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               onTap: () {
                                 Navigator.pushReplacementNamed(context, AppRoutes.loginRoute);
                                 setState(() {
-
                                 });
                               },
-                              child: Expanded(
-                                child: Text(
-                                  textAlign: TextAlign.center,
-                                  overflow: TextOverflow.ellipsis,
-                                    'Already have an account? login',
-                                    style: AppStyles.medium18White,
-                                    maxLines: 1,
-                                ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      textAlign: TextAlign.center,
+                                      overflow: TextOverflow.ellipsis,
+                                        'Already have an account? login',
+                                        style: AppStyles.medium18White,
+                                        maxLines: 1,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           )
