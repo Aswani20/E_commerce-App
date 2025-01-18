@@ -25,127 +25,131 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                  top: 91.h, bottom: 87.h, left: 97.w, right: 97.w),
-              child: Image.asset(
-                AssetsManager.appBarLeading,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                    top: 91.h, bottom: 87.h, left: 97.w, right: 97.w),
+                child: Image.asset(
+                  AssetsManager.appBarLeading,
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  AutoSizeText(
-                    'Welcome Back To Route',
-                    style: AppStyles.semi24White,
-                    maxLines: 1,
-                  ),
-                  AutoSizeText(
-                    'Please sign in with your mail',
-                    style: AppStyles.light16White,
-                    maxLines: 1,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 40.h),
-                    child: Form(
-                      key: formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text(
-                            "User Name",
-                            style: AppStyles.medium18White,
-                          ),
-                          CustomTextFormField(
-                            keyboardType: TextInputType.text,
-                            isObscureText: false,
-                            hintText: "enter your name",
-                            hintStyle: AppStyles.light18lightBlack,
-                            filledColor: AppColors.whiteColor,
-                            controller: userNameController,
-                            validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
-                                return 'please enter your user name';
-                              }
-                              bool userNameValid = RegExp(
-                                  r"^[A-Za-z][A-Za-z0-9_]{5,29}$")
-                                  .hasMatch(value);
-                              if (!userNameValid) {
-                                return 'Invalid ex: Julia Or Laasya_Setty';
-                              }
-                              return null;
-                              return null;
-                            },
-                          ),
-                          Text(
-                            "Password",
-                            style: AppStyles.medium18White,
-                          ),
-                          CustomTextFormField(
-                            keyboardType: TextInputType.visiblePassword,
-                            isObscureText: true,
-                            hintText: "enter your password",
-                            hintStyle: AppStyles.light18lightBlack,
-                            filledColor: AppColors.whiteColor,
-                            controller: passwordController,
-                            validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
-                                return 'please enter password';
-                              }
-                              if (value.trim().length < 6 ||
-                                  value.trim().length > 30) {
-                                return 'password should be >6 & <30';
-                              }
-                              return null;
-                            },
-                            suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.visibility_off)),
-                          ),
-                          TextButton(
-                            onPressed: (){},
-                            child: Text(
-                            'Forgot Password',
-                            style: AppStyles.regular18White,
-                            textAlign: TextAlign.end,
-                          ),),
-                          CustomElevatedButton(text: "Login", onPressed: (){login();}),
-                          Padding(
-                            padding: EdgeInsets.only(top: 30.h),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  'Don’t have an account? ',
-                                  style: AppStyles.semi16white,
-                                  maxLines: 1,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    Navigator.pushReplacementNamed(context, RegisterScreen.routeName);
-                                    setState(() {
-                                    },);
-                                  },
-                                  child: Text(
-                                    'Create Account',
-                                    style: AppStyles.semi16white,
-                                  ),
-                                )
-                              ],
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    AutoSizeText(
+                      'Welcome Back To Route',
+                      style: AppStyles.semi24White,
+                      maxLines: 1,
+                    ),
+                    AutoSizeText(
+                      'Please sign in with your mail',
+                      style: AppStyles.light16White,
+                      maxLines: 1,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 40.h),
+                      child: Form(
+                        key: formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Text(
+                              "User Name",
+                              style: AppStyles.medium18White,
                             ),
-                          )
-                        ],
+                            CustomTextFormField(
+                              isPassword: false,
+                              keyboardType: TextInputType.text,
+                              isObscureText: false,
+                              hintText: "enter your name",
+                              hintStyle: AppStyles.light18lightBlack,
+                              filledColor: AppColors.whiteColor,
+                              controller: userNameController,
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'please enter your user name';
+                                }
+                                bool userNameValid = RegExp(
+                                    r"^[A-Za-z][A-Za-z0-9_]{5,29}$")
+                                    .hasMatch(value);
+                                if (!userNameValid) {
+                                  return 'Invalid ex: Julia Or Laasya_Setty';
+                                }
+                                return null;
+                                return null;
+                              },
+                            ),
+                            Text(
+                              "Password",
+                              style: AppStyles.medium18White,
+                            ),
+                            CustomTextFormField(
+                              isPassword: true,
+                              keyboardType: TextInputType.visiblePassword,
+                              isObscureText: true,
+                              hintText: "enter your password",
+                              hintStyle: AppStyles.light18lightBlack,
+                              filledColor: AppColors.whiteColor,
+                              controller: passwordController,
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'please enter password';
+                                }
+                                if (value.trim().length < 6 ||
+                                    value.trim().length > 30) {
+                                  return 'password should be >6 & <30';
+                                }
+                                return null;
+                              },
+                              suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.visibility_off)),
+                            ),
+                            InkWell(
+                              onTap: (){},
+                              child: Text(
+                              'Forgot Password',
+                              style: AppStyles.regular18White,
+                              textAlign: TextAlign.end,
+                            ),),
+                            CustomElevatedButton(text: "Login", onPressed: (){login();}),
+                            Padding(
+                              padding: EdgeInsets.only(top: 30.h),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    overflow: TextOverflow.ellipsis,
+                                    'Don’t have an account? ',
+                                    style: AppStyles.semi16white,
+                                    maxLines: 1,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pushReplacementNamed(context, RegisterScreen.routeName);
+                                      setState(() {
+                                      },);
+                                    },
+                                    child: Text(
+                                      'Create Account',
+                                      style: AppStyles.semi16white,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
