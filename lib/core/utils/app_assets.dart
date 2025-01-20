@@ -4,6 +4,7 @@ class AppAssets {
   static const String editIcon = "assets/icons/edit.png";
   static const String selectedCategoryIcon = "assets/icons/category_icon_selected.png";
   static const String selectedAccountIcon = "assets/icons/account_icon_selected.png";
+  static const String selectedAddToFavouriteIcon = "assets/icons/add_to_favourite.png";
 
 // Not selected icons
   static const String unSelectedHomeIcon = "assets/icons/home_icon_not_selected.png";

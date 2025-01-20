@@ -4,7 +4,6 @@ import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/favorite_tab/f
 import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/home_tab/home_tab.dart';
 import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/products_tab/products_tab.dart';
 import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/user_tab/user_tab.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,8 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> bodyList = [
     const HomeTab(),
     const ProductsTab(),
-    const FavoriteTab(),
-    const UserTab()
+    FavoriteTab(),
+    UserTab()
   ];
 
   void bottomNavOnTap(int index) {
@@ -34,9 +33,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leadingWidth: 90.w,
-          leading:  Image.asset(
-            AppAssets.routeLogo,
+          leadingWidth: 100.w,
+          leading:  Padding(
+            padding: EdgeInsets.only(left: 12.w),
+            child: Image.asset(
+              AppAssets.routeLogo,
+            ),
           ),
         ),
         body: bodyList[selectedIndex],

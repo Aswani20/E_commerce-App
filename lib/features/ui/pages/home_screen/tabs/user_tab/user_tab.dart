@@ -6,12 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UserTab extends StatelessWidget {
-  const UserTab({Key? key}) : super(key: key);
+  TextEditingController fullNameController = TextEditingController(text: "Mohamed Mohamed Nabil");
+  TextEditingController emailController = TextEditingController(text: "mohamed.N@gmail.com");
+  TextEditingController passwordController = TextEditingController(text: "**********");
+  TextEditingController mobileController = TextEditingController(text: "01122118855");
+  TextEditingController addressController = TextEditingController(text: "6th October, street 11.....");
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +36,7 @@ class UserTab extends StatelessWidget {
             CustomTextFormField(
               isPassword: false,
               keyboardType: TextInputType.name,
-              controller: TextEditingController(text: "Mohamed Mohamed Nabil"),
+              controller: fullNameController,
               borderColor: AppColors.primary30Opacity,
               suffixIcon: IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
               textStyle: AppStyles.medium14PrimaryDark,
@@ -44,7 +48,7 @@ class UserTab extends StatelessWidget {
             CustomTextFormField(
               isPassword: false,
               keyboardType: TextInputType.emailAddress,
-              controller: TextEditingController(text: "mohamed.N@gmail.com"),
+              controller: emailController,
               borderColor: AppColors.primary30Opacity,
               suffixIcon: IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
               textStyle: AppStyles.medium14PrimaryDark,
@@ -57,7 +61,7 @@ class UserTab extends StatelessWidget {
               isObscureText: true,
               isPassword: false,
               keyboardType: TextInputType.visiblePassword,
-              controller: TextEditingController(text: "**********"),
+              controller: passwordController,
               borderColor: AppColors.primary30Opacity,
               suffixIcon: IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
               textStyle: AppStyles.medium14PrimaryDark,
@@ -69,7 +73,7 @@ class UserTab extends StatelessWidget {
             CustomTextFormField(
               isPassword: false,
               keyboardType: TextInputType.phone,
-              controller: TextEditingController(text: "01122118855"),
+              controller: mobileController,
               borderColor: AppColors.primary30Opacity,
               suffixIcon: IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
               textStyle: AppStyles.medium14PrimaryDark,
@@ -81,7 +85,7 @@ class UserTab extends StatelessWidget {
             CustomTextFormField(
               isPassword: false,
               keyboardType: TextInputType.streetAddress,
-              controller: TextEditingController(text: "6th October, street 11....."),
+              controller: addressController,
               borderColor: AppColors.primary30Opacity,
               suffixIcon: IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
               textStyle: AppStyles.medium14PrimaryDark,
