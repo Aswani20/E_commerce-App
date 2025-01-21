@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
+import 'package:e_commerce_app/core/utils/custom_txt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +21,7 @@ class ProductItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15.r),
                 child: CachedNetworkImage(
                   width: 191.w,
-                  height: 128.h,
+                  height: 120.h,
                   fit: BoxFit.cover,
                   imageUrl:
                       "https://www.nike.sa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw42ccc9ea/nk/a9b/7/6/4/b/1/a9b764b1_834c_413e_aec2_f460112b2de6.jpg?sw=2000&sh=2000&sm=fit",
@@ -63,12 +64,33 @@ class ProductItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildText(context, "Nike Air Jordan"),
-                _buildText(context, "NIKE SHOES FLEXIBLE FOR MEN"),
-                _buildText(context, "EGP 1500"),
+                CustomTxt(
+                  text: "Nike Air Jordan",
+                  fontSize: 12.sp,
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                CustomTxt(
+                  text: "NIKE SHOES FLEXIBLE FOR MEN",
+                  fontSize: 12.sp,
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                CustomTxt(
+                  text: "EGP 1500",
+                  fontSize: 12.sp,
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
                 Row(
                   children: [
-                    _buildText(context, "Review (4.8)"),
+                    CustomTxt(
+                      text: "Review (4.8)",
+                      fontSize: 12.sp,
+                    ),
                     Icon(
                       Icons.star,
                       color: AppColors.yellowColor,
@@ -95,19 +117,6 @@ class ProductItem extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-
-  Widget _buildText(BuildContext context, String text) {
-    return Text(
-      text,
-      textWidthBasis: TextWidthBasis.longestLine,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-          color: AppColors.primaryDark,
-          fontWeight: FontWeight.w500,
-          fontSize: 14.sp),
     );
   }
 }

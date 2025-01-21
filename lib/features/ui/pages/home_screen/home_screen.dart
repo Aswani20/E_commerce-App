@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_assets.dart';
+import 'package:e_commerce_app/core/utils/app_routes.dart';
 import 'package:e_commerce_app/core/utils/app_styles.dart';
+import 'package:e_commerce_app/features/ui/pages/cart_screen/cart_screen.dart';
 import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/favorite_tab/favorite_tab.dart';
 import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/home_tab/home_tab.dart';
 import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/products_tab/products_tab.dart';
@@ -105,7 +107,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   PreferredSizeWidget _buildAppBar(int index) {
     return AppBar(
-      backgroundColor: AppColors.whiteColor,
+      surfaceTintColor: AppColors.transparentColor,
+      elevation: 0,
       toolbarHeight: index != 3 ? 120.h : kToolbarHeight,
       leadingWidth: double.infinity,
       leading: Padding(
@@ -153,6 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: InkWell(
                         onTap: () {
                           //todo: navigate to cart screen
+                          Navigator.of(context).pushNamed(AppRoutes.cartRoute);
                         },
                         child: ImageIcon(
                           const AssetImage(AppAssets.shoppingCart),
