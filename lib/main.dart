@@ -8,7 +8,7 @@ import 'package:e_commerce_app/features/ui/pages/product_details_screen/product_
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main(){
+void main() {
   runApp(MyApp());
 }
 
@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.loginRoute,
+          initialRoute: AppRoutes.homeRoute,
           routes: {
-            AppRoutes.loginRoute : (context) => LoginScreen(),
-            AppRoutes.registerRoute : (context) => RegisterScreen(),
+            AppRoutes.loginRoute: (context) => LoginScreen(),
+            AppRoutes.registerRoute: (context) => RegisterScreen(),
             AppRoutes.homeRoute: (context) => const HomeScreen(),
             AppRoutes.cartRoute: (context) => const CartScreen(),
             AppRoutes.productRoute: (context) => const ProductDetailsScreen(),

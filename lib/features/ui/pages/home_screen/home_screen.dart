@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_assets.dart';
+import 'package:e_commerce_app/core/utils/app_styles.dart';
 import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/favorite_tab/favorite_tab.dart';
 import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/home_tab/home_tab.dart';
 import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/products_tab/products_tab.dart';
@@ -7,7 +8,6 @@ import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/user_tab/user_
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   List<Widget> bodyList = [
     const HomeTab(),
-    const ProductsTab(),
+    ProductsTab(),
     const FavoriteTab(),
     const UserTab()
   ];
@@ -33,13 +33,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leadingWidth: 90.w,
-          leading:  Image.asset(
-            AppAssets.routeLogo,
-          ),
+        appBar: _buildAppBar(selectedIndex),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
+          child: bodyList[selectedIndex],
         ),
-        body: bodyList[selectedIndex],
         bottomNavigationBar: ClipRRect(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(16.r),
@@ -93,6 +91,83 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Image.asset(isSelected ? selectedIcon : unselectedIcon),
       ),
       label: "",
+    );
+  }
+
+  OutlineInputBorder _buildCustomBorder() {
+    return OutlineInputBorder(
+        borderSide: const BorderSide(
+          color: AppColors.primaryColor,
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(50.r));
+  }
+
+  PreferredSizeWidget _buildAppBar(int index) {
+    return AppBar(
+      backgroundColor: AppColors.whiteColor,
+      toolbarHeight: index != 3 ? 120.h : kToolbarHeight,
+      leadingWidth: double.infinity,
+      leading: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 10.h),
+              child: Image.asset(
+                AppAssets.routeLogo,
+                width: 66.w,
+                height: 22.h,
+              ),
+            ),
+            Visibility(
+              visible: index != 3,
+              child: Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                          style: AppStyles.regular14Text,
+                          cursorColor: AppColors.primaryColor,
+                          onTap: () {
+                            //todo: implement search logic
+                          },
+                          decoration: InputDecoration(
+                              border: _buildCustomBorder(),
+                              enabledBorder: _buildCustomBorder(),
+                              focusedBorder: _buildCustomBorder(),
+                              contentPadding: EdgeInsets.all(16.h),
+                              hintStyle: AppStyles.light14SearchHint,
+                              hintText: "what do you search for?",
+                              prefixIcon: Icon(
+                                Icons.search,
+                                size: 30.sp,
+                                color: AppColors.primaryColor.withOpacity(0.75),
+                              ))),
+                    ),
+                    Badge(
+                      alignment: AlignmentDirectional.topStart,
+                      backgroundColor: AppColors.greenColor,
+                      label: const Text("5"),
+                      child: InkWell(
+                        onTap: () {
+                          //todo: navigate to cart screen
+                        },
+                        child: ImageIcon(
+                          const AssetImage(AppAssets.shoppingCart),
+                          size: 35.sp,
+                          color: AppColors.primaryColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
