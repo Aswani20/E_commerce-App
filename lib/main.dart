@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:e_commerce_app/core/utils/app_theme.dart';
 import 'package:e_commerce_app/core/utils/app_routes.dart';
 import 'package:e_commerce_app/features/ui/auth/login/login_screen.dart';
@@ -9,7 +10,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    DevicePreview(
+      enabled: true,
+      tools: const [
+        ...DevicePreview.defaultTools,
+      ],
+      builder: (context) => MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

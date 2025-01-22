@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_styles.dart';
-import 'package:e_commerce_app/core/utils/custom_text_form_field.dart';
+import 'package:e_commerce_app/features/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,7 +24,9 @@ class UserTab extends StatelessWidget {
               "mohamed.N@gmail.com",
               style: AppStyles.medium14LightPrimary,
             ),
-            SizedBox(height: 40.h,),
+            SizedBox(
+              height: 40.h,
+            ),
             AutoSizeText(
               "Your full name",
               style: AppStyles.medium18Header,
@@ -81,7 +83,8 @@ class UserTab extends StatelessWidget {
             CustomTextFormField(
               isPassword: false,
               keyboardType: TextInputType.streetAddress,
-              controller: TextEditingController(text: "6th October, street 11....."),
+              controller:
+                  TextEditingController(text: "6th October, street 11....."),
               borderColor: AppColors.primary30Opacity,
               suffixIcon: IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
               textStyle: AppStyles.medium14PrimaryDark,

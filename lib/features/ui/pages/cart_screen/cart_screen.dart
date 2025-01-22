@@ -1,8 +1,7 @@
-import 'package:e_commerce_app/core/utils/app_assets.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
-import 'package:e_commerce_app/core/utils/custom_txt.dart';
 import 'package:e_commerce_app/features/ui/widgets/cart_item.dart';
 import 'package:e_commerce_app/features/ui/widgets/custom_badge.dart';
+import 'package:e_commerce_app/features/ui/widgets/custom_txt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
