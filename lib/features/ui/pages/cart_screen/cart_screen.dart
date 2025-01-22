@@ -2,6 +2,7 @@ import 'package:e_commerce_app/core/utils/app_assets.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/custom_txt.dart';
 import 'package:e_commerce_app/features/ui/widgets/cart_item.dart';
+import 'package:e_commerce_app/features/ui/widgets/custom_badge.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,42 +14,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          surfaceTintColor: Colors.transparent,
-          toolbarHeight: 50.h,
-          centerTitle: true,
-          elevation: 0,
-          title: const Text("Cart"),
-          backgroundColor: Colors.transparent,
-          foregroundColor: AppColors.primaryColor,
-          titleTextStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              fontSize: 24.sp,
-              fontWeight: FontWeight.w500,
-              color: AppColors.primaryColor),
-          actions: [
-            IconButton(
-                padding: EdgeInsets.zero,
-                onPressed: () {},
-                icon: Icon(
-                  Icons.search_outlined,
-                  size: 35.sp,
-                  color: AppColors.primaryColor,
-                )),
-            Padding(
-              padding: EdgeInsets.only(right: 16.w),
-              child: Badge(
-                alignment: AlignmentDirectional.topStart,
-                backgroundColor: AppColors.greenColor,
-                label: const Text("5"),
-                child: ImageIcon(
-                  const AssetImage(AppAssets.shoppingCart),
-                  size: 35.sp,
-                  color: AppColors.primaryColor,
-                ),
-              ),
-            )
-          ],
-        ),
+        appBar: _customAppBar(context),
         body: Column(
           children: [
             Expanded(
@@ -100,4 +66,35 @@ class CartScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+PreferredSizeWidget _customAppBar(BuildContext context) {
+  return AppBar(
+    surfaceTintColor: Colors.transparent,
+    toolbarHeight: 50.h,
+    centerTitle: true,
+    elevation: 0,
+    title: const Text("Cart"),
+    backgroundColor: Colors.transparent,
+    foregroundColor: AppColors.primaryColor,
+    titleTextStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+        fontSize: 24.sp,
+        fontWeight: FontWeight.w500,
+        color: AppColors.primaryColor),
+    actions: [
+      IconButton(
+        padding: EdgeInsets.zero,
+        onPressed: () {},
+        icon: Icon(
+          Icons.search_outlined,
+          size: 35.sp,
+          color: AppColors.primaryColor,
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.only(right: 16.w),
+        child: const CustomAppBarBadge(count: 5),
+      ),
+    ],
+  );
 }
