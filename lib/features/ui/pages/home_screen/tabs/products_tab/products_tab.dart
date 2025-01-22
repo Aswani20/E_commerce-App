@@ -16,7 +16,7 @@ class ProductsTab extends StatelessWidget {
             child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 2 / 2.2,
+              childAspectRatio: 2 / 2.7.w,
               crossAxisSpacing: 16.w,
               mainAxisSpacing: 16.h),
           itemCount: 10,

@@ -30,40 +30,27 @@ class HomeTab extends StatelessWidget {
             height: 24.h,
           ),
           _lineBreak(name: "Categories"),
-          SizedBox(
-            height: 200.h,
-            width: double.infinity,
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 16.h,
-                  crossAxisSpacing: 16.w),
-              itemCount: 15,
-              scrollDirection: Axis.horizontal,
-              physics: const ScrollPhysics(),
-              itemBuilder: (context, index) {
-                return const CategoryBrandItem();
-              },
-            ),
-          ),
+          _buildCategoryBrandSec(const CategoryBrandItem()),
           _lineBreak(name: "Brands"),
-          SizedBox(
-            height: 200.h,
-            width: double.infinity,
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 16.h,
-                  crossAxisSpacing: 16.w),
-              itemCount: 15,
-              scrollDirection: Axis.horizontal,
-              physics: const ScrollPhysics(),
-              itemBuilder: (context, index) {
-                return const CategoryBrandItem();
-              },
-            ),
-          ),
+          _buildCategoryBrandSec(const CategoryBrandItem()),
         ],
+      ),
+    );
+  }
+
+  SizedBox _buildCategoryBrandSec(Widget categoryBrand) {
+    return SizedBox(
+      height: 250.h,
+      width: double.infinity,
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, mainAxisSpacing: 16.h, crossAxisSpacing: 16.w),
+        itemCount: 20,
+        scrollDirection: Axis.horizontal,
+        physics: const ScrollPhysics(),
+        itemBuilder: (context, index) {
+          return categoryBrand;
+        },
       ),
     );
   }

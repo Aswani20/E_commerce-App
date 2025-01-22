@@ -36,49 +36,50 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: _buildAppBar(selectedIndex),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: bodyList[selectedIndex],
+      appBar: _buildAppBar(selectedIndex),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        child: bodyList[selectedIndex],
+      ),
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16.r),
+          topRight: Radius.circular(16.r),
         ),
-        bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(16.r),
-            topRight: Radius.circular(16.r),
+        child: Theme(
+          data: Theme.of(context).copyWith(canvasColor: AppColors.primaryColor),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            elevation: 0,
+            currentIndex: selectedIndex,
+            onTap: bottomNavOnTap,
+            iconSize: 24.sp, // Adjust the icon size
+            items: [
+              _bottomNavBarItemBuilder(
+                isSelected: selectedIndex == 0,
+                selectedIcon: AppAssets.selectedHomeIcon,
+                unselectedIcon: AppAssets.unSelectedHomeIcon,
+              ),
+              _bottomNavBarItemBuilder(
+                isSelected: selectedIndex == 1,
+                selectedIcon: AppAssets.selectedCategoryIcon,
+                unselectedIcon: AppAssets.unSelectedCategoryIcon,
+              ),
+              _bottomNavBarItemBuilder(
+                isSelected: selectedIndex == 2,
+                selectedIcon: AppAssets.selectedFavouriteIcon,
+                unselectedIcon: AppAssets.unSelectedFavouriteIcon,
+              ),
+              _bottomNavBarItemBuilder(
+                isSelected: selectedIndex == 3,
+                selectedIcon: AppAssets.selectedAccountIcon,
+                unselectedIcon: AppAssets.unSelectedAccountIcon,
+              ),
+            ],
           ),
-          child: Theme(
-            data:
-                Theme.of(context).copyWith(canvasColor: AppColors.primaryColor),
-            child: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              elevation: 0,
-              currentIndex: selectedIndex,
-              onTap: bottomNavOnTap,
-              items: [
-                _bottomNavBarItemBuilder(
-                  isSelected: selectedIndex == 0,
-                  selectedIcon: AppAssets.selectedHomeIcon,
-                  unselectedIcon: AppAssets.unSelectedHomeIcon,
-                ),
-                _bottomNavBarItemBuilder(
-                  isSelected: selectedIndex == 1,
-                  selectedIcon: AppAssets.selectedCategoryIcon,
-                  unselectedIcon: AppAssets.unSelectedCategoryIcon,
-                ),
-                _bottomNavBarItemBuilder(
-                  isSelected: selectedIndex == 2,
-                  selectedIcon: AppAssets.selectedFavouriteIcon,
-                  unselectedIcon: AppAssets.unSelectedFavouriteIcon,
-                ),
-                _bottomNavBarItemBuilder(
-                  isSelected: selectedIndex == 3,
-                  selectedIcon: AppAssets.selectedAccountIcon,
-                  unselectedIcon: AppAssets.unSelectedAccountIcon,
-                ),
-              ],
-            ),
-          ),
-        ));
+        ),
+      ),
+    );
   }
 
   BottomNavigationBarItem _bottomNavBarItemBuilder(
@@ -91,7 +92,9 @@ class _HomeScreenState extends State<HomeScreen> {
             isSelected ? AppColors.primaryColor : AppColors.whiteColor,
         backgroundColor: isSelected ? AppColors.whiteColor : Colors.transparent,
         radius: 25.r,
-        child: Image.asset(isSelected ? selectedIcon : unselectedIcon),
+        child: Image.asset(
+          isSelected ? selectedIcon : unselectedIcon,
+        ),
       ),
       label: "",
     );
