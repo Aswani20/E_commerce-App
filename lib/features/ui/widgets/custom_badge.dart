@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/utils/app_assets.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
+import 'package:e_commerce_app/core/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,14 +11,19 @@ class CustomAppBarBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Badge(
-      alignment: AlignmentDirectional.topStart,
-      backgroundColor: AppColors.greenColor,
-      label: Text(count.toString()),
-      child: ImageIcon(
-        const AssetImage(AppAssets.shoppingCart),
-        size: 35.sp,
-        color: AppColors.primaryColor,
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).pushNamed(AppRoutes.cartRoute);
+      },
+      child: Badge(
+        alignment: AlignmentDirectional.topStart,
+        backgroundColor: AppColors.greenColor,
+        label: Text(count.toString()),
+        child: ImageIcon(
+          const AssetImage(AppAssets.shoppingCart),
+          size: 35.sp,
+          color: AppColors.primaryColor,
+        ),
       ),
     );
   }
