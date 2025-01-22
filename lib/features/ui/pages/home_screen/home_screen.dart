@@ -7,6 +7,7 @@ import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/favorite_tab/f
 import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/home_tab/home_tab.dart';
 import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/products_tab/products_tab.dart';
 import 'package:e_commerce_app/features/ui/pages/home_screen/tabs/user_tab/user_tab.dart';
+import 'package:e_commerce_app/features/ui/widgets/custom_badge.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -149,22 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: AppColors.primaryColor.withOpacity(0.75),
                               ))),
                     ),
-                    Badge(
-                      alignment: AlignmentDirectional.topStart,
-                      backgroundColor: AppColors.greenColor,
-                      label: const Text("5"),
-                      child: InkWell(
-                        onTap: () {
-                          //todo: navigate to cart screen
-                          Navigator.of(context).pushNamed(AppRoutes.cartRoute);
-                        },
-                        child: ImageIcon(
-                          const AssetImage(AppAssets.shoppingCart),
-                          size: 35.sp,
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                    ),
+                    const CustomAppBarBadge(count: 5)
                   ],
                 ),
               ),
