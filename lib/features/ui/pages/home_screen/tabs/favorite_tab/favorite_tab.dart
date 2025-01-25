@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FavoriteTab extends StatelessWidget {
-  List<Map<String, dynamic>> favoriteProducts = [
+  List<Map<String, dynamic>> favoriteProducts =  [
     {
       "title": "Nike Air Jordon",
       "finalPrice": "1,200",
@@ -20,7 +20,7 @@ class FavoriteTab extends StatelessWidget {
       "finalPrice": "600",
       "color": const Color.fromARGB(255, 233, 123, 20),
       "imageUrl":
-      "https://s3-alpha-sig.figma.com/img/335b/4609/de8eaf66c6e5c2fad29288b1bb0c6ada?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=VxLSH2U8OAfQ1yxFPiL9hKbXG67g6yA0tRDLaWlla0gA58KCx94JrIalAu86GQHdymToO4gKUnZBFMosbyiovSL6F2So4QL-UytilX8qDbbrDRldkCKYv55ORm9GRbIbteDzTEUip05lR3047AtBYOtGAJAkQKTSVK6IP9x09-Ie2Wsv2SAdDUouAvPsLVDzi6YFN7Z7tcI7rwD~BN3SA1cz48u8xHcxI8qkQOiIrnvjZIf4G0ahqTy6KMESPuP5fORAyjsD6DRR918-Liy3YuDowNCg8rAt8-8RIFtt01W0CDNTyrwRBAzHsfgwmdlFVaZi7naiT52LGcsbWDhh-g__",
+      "https://imgs.search.brave.com/NaDDjSX3QXU-04z5jEIziIY6ww1QLwFnktJ5ZF8RI0A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA5LzYwLzkyLzIz/LzM2MF9GXzk2MDky/MjMyNV9Renp0emlr/cXllU3dsQWxxUFd5/NkZjSzdpOTRiV2t2/bi5qcGc",
       "salePrice": "750"
     },
     {
@@ -57,10 +57,11 @@ class FavoriteTab extends StatelessWidget {
     }
   ];
 
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
       child: Column(
         children: [
           Row(
@@ -93,6 +94,8 @@ class FavoriteTab extends StatelessWidget {
       ),
     );
   }
+
+
   TextField _buildSearchTextField() {
     return TextField(
         style: AppStyles.regular14Text,

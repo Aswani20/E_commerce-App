@@ -2,29 +2,34 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/utils/app_assets.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
+import 'package:e_commerce_app/core/utils/app_routes.dart';
 import 'package:e_commerce_app/core/utils/app_styles.dart';
+import 'package:e_commerce_app/core/utils/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:colornames/colornames.dart';
 
 class FavoriteItem extends StatefulWidget {
-  const FavoriteItem({super.key, required this.product});
-
   final Map<String, dynamic> product;
+  String heartIcon = AppAssets.selectedFavouriteIcon;
+  bool isClicked = false;
+
+  FavoriteItem({super.key, required this.product});
 
   @override
   State<FavoriteItem> createState() => _FavoriteItemState();
 }
 
 class _FavoriteItemState extends State<FavoriteItem> {
-  String heartIcon = AppAssets.selectedFavouriteIcon;
-  bool isClicked = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 24.h),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, AppRoutes.productRoute,
+              arguments: widget.product);
+        },
         child: Container(
           height: 135.h,
           decoration: BoxDecoration(
@@ -82,8 +87,8 @@ class _FavoriteItemState extends State<FavoriteItem> {
                             ),
                             onTap: () {
                               setState(() {
-                                isClicked = !isClicked;
-                                heartIcon = !isClicked
+                                widget.isClicked = !widget.isClicked;
+                                widget.heartIcon = !widget.isClicked
                                     ? AppAssets.selectedFavouriteIcon
                                     : AppAssets.selectedAddToFavouriteIcon;
                               });
@@ -97,12 +102,11 @@ class _FavoriteItemState extends State<FavoriteItem> {
                               child: Padding(
                                   padding: const EdgeInsets.all(6),
                                   child: ImageIcon(
-                                    AssetImage(heartIcon),
+                                    AssetImage(widget.heartIcon),
                                     color: AppColors.primaryColor,
                                   )),
                             ),
                           ),
-
                         ],
                       ),
                       Row(
@@ -133,24 +137,15 @@ class _FavoriteItemState extends State<FavoriteItem> {
                           ),
                           AutoSizeText(
                             "EGP${widget.product["salePrice"]}",
-                            style: AppStyles.regular11SalePrice,
+                            style: AppStyles.regular11SalePrice.copyWith(
+                                decoration: TextDecoration.lineThrough),
                           ),
                           const Spacer(),
                           SizedBox(
                             width: 100.w,
                             height: 36.h,
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(14.r)),
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 1.w),
-                                    backgroundColor: AppColors.primaryColor),
-                                onPressed: () {},
-                                child: Text("Add to cart",
-                                    style: AppStyles.medium14Category.copyWith(
-                                        color: AppColors.whiteColor))),
+                            child: CustomElevatedButton(text: "Add To Cart", onPressed: (){}, backgroundColor: AppColors.primaryColor, textStyle:  AppStyles.medium14Category
+                                .copyWith(color: AppColors.whiteColor)),
                           )
                         ],
                       ),
@@ -165,3 +160,4 @@ class _FavoriteItemState extends State<FavoriteItem> {
     );
   }
 }
+

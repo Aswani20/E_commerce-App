@@ -138,7 +138,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             },
                             suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.visibility_off)),
                           ),
-                          CustomElevatedButton(text: "Sign up", onPressed: (){register();}),
+                          Padding(
+                            padding: EdgeInsets.only(top: 35.h),
+                            child: CustomElevatedButton(backgroundColor: AppColors.whiteColor ,textStyle: AppStyles.semi20Primary,text: "Sign up", onPressed: (){register();}),
+                          ),
                           Padding(
                             padding: EdgeInsets.only(top: 30.h, bottom: 30.h),
                             child: GestureDetector(

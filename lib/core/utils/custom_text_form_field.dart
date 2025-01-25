@@ -17,23 +17,25 @@ class CustomTextFormField extends StatefulWidget {
   bool isObscureText;
   bool isPassword;
   TextStyle? textStyle;
+  bool  readonly;
 
   CustomTextFormField({
     super.key,
     this.controller,
     this.validator,
-    this.isObscureText = false,
     this.hintText,
     this.hintStyle,
     this.textStyle,
-    this.isPassword = false,
     this.label,
     this.labelStyle,
     this.prefixIcon,
     this.suffixIcon,
+    this.isObscureText = false,
+    this.isPassword = false,
     this.filledColor = AppColors.whiteColor,
     this.keyboardType = TextInputType.text,
     this.borderColor = AppColors.whiteColor,
+    this.readonly = false,
   });
 
   @override
@@ -51,6 +53,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         keyboardType: widget.keyboardType,
         controller: widget.controller,
         validator: widget.validator,
+        readOnly: widget.readonly,
         decoration: InputDecoration(
           filled: true,
           fillColor: widget.filledColor,

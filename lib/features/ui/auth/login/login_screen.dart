@@ -112,7 +112,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               style: AppStyles.regular18White,
                               textAlign: TextAlign.end,
                             ),),
-                            CustomElevatedButton(text: "Login", onPressed: (){login();}),
+                            Padding(
+                              padding: EdgeInsets.only(top: 35.h),
+                              child: CustomElevatedButton(backgroundColor: AppColors.whiteColor ,textStyle: AppStyles.semi20Primary,text: "Login", onPressed: (){login();}),
+                            ),
                             Padding(
                               padding: EdgeInsets.only(top: 30.h),
                               child: GestureDetector(
