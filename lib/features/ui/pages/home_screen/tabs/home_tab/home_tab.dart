@@ -11,110 +11,48 @@ class HomeTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Expanded(child: _buildSearchTextField()),
-                  Badge(
-                    alignment: AlignmentDirectional.topStart,
-                    backgroundColor: AppColors.greenColor,
-                    label: const Text("0"),
-                    child: InkWell(
-                      onTap: () {
-                        //todo: navigate to cart screen
-                      },
-                      child: ImageIcon(
-                        const AssetImage(AppAssets.shoppingCart),
-                        size: 35.sp,
-                        color: AppColors.primaryColor,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 16.h,
-              ),
-              _buildAnnouncement(images: [
-                  AppAssets.announcement1,
-                  AppAssets.announcement2,
-                  AppAssets.announcement3,
-                ],),
-              SizedBox(height: 24.h,),
-              _lineBreak(name: "Categories"),
-              SizedBox(
-                height: 200.h,
-                width: double.infinity,
-                child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 16.h,
-                      crossAxisSpacing: 16.w),
-                  itemCount: 15,
-                  scrollDirection: Axis.horizontal,
-                  physics: const ScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return const CategoryBrandItem();
-                  },
-                ),
-              ),
-              _lineBreak(name: "Brands"),
-              SizedBox(
-                height: 200.h,
-                width: double.infinity,
-                child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 16.h,
-                      crossAxisSpacing: 16.w),
-                  itemCount: 15,
-                  scrollDirection: Axis.horizontal,
-                  physics: const ScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return const CategoryBrandItem();
-                  },
-                ),
-              ),
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 16.h,
+          ),
+          _buildAnnouncement(
+            images: [
+              AppAssets.announcement1,
+              AppAssets.announcement2,
+              AppAssets.announcement3,
             ],
           ),
-        ),
+          SizedBox(
+            height: 24.h,
+          ),
+          _lineBreak(name: "Categories"),
+          _buildCategoryBrandSec(const CategoryBrandItem()),
+          _lineBreak(name: "Brands"),
+          _buildCategoryBrandSec(const CategoryBrandItem()),
+        ],
       ),
     );
   }
 
-  TextField _buildSearchTextField() {
-    return TextField(
-        style: AppStyles.regular14Text,
-        cursorColor: AppColors.primaryColor,
-        onTap: () {},
-        decoration: InputDecoration(
-            border: _buildCustomBorder(),
-            enabledBorder: _buildCustomBorder(),
-            focusedBorder: _buildCustomBorder(),
-            contentPadding: EdgeInsets.all(16.h),
-            hintStyle: AppStyles.light14SearchHint,
-            hintText: "what do you search for?",
-            prefixIcon: Icon(
-              Icons.search,
-              size: 32.sp,
-              color: AppColors.primaryColor.withOpacity(0.75),
-            )));
-  }
-
-  OutlineInputBorder _buildCustomBorder() {
-    return OutlineInputBorder(
-        borderSide: BorderSide(
-          color: AppColors.primaryColor,
-          width: 1,
-        ),
-        borderRadius: BorderRadius.circular(50.r));
+  SizedBox _buildCategoryBrandSec(Widget categoryBrand) {
+    return SizedBox(
+      height: 250.h,
+      width: double.infinity,
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, mainAxisSpacing: 16.h, crossAxisSpacing: 16.w),
+        itemCount: 20,
+        scrollDirection: Axis.horizontal,
+        physics: const ScrollPhysics(),
+        itemBuilder: (context, index) {
+          return categoryBrand;
+        },
+      ),
+    );
   }
 
   ImageSlideshow _buildAnnouncement({
