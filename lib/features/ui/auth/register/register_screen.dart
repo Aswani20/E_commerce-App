@@ -82,7 +82,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               if (value == null || value.trim().isEmpty) {
                                 return 'please enter your mobile number';
                               }
-                              if (value.length < 11) {
+                              if(value.length < 11){
                                 return 'Number Should be 11 number';
                               }
 
@@ -106,7 +106,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 return 'please enter your email address';
                               }
                               bool emailValid = RegExp(
-                                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                   .hasMatch(value);
                               if (!emailValid) {
                                 return 'invalid email';
@@ -136,22 +136,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               }
                               return null;
                             },
-                            suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.visibility_off)),
+                            suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.visibility_off)),
                           ),
-                          CustomElevatedButton(
-                              text: "Sign up",
-                              onPressed: () {
-                                register();
-                              }),
+                          Padding(
+                            padding: EdgeInsets.only(top: 35.h),
+                            child: CustomElevatedButton(backgroundColor: AppColors.whiteColor ,textStyle: AppStyles.semi20Primary,text: "Sign up", onPressed: (){register();}),
+                          ),
                           Padding(
                             padding: EdgeInsets.only(top: 30.h, bottom: 30.h),
                             child: GestureDetector(
                               onTap: () {
-                                Navigator.pushReplacementNamed(
-                                    context, AppRoutes.loginRoute);
-                                setState(() {});
+                                Navigator.pushReplacementNamed(context, AppRoutes.loginRoute);
+                                setState(() {
+                                });
                               },
                               child: Row(
                                 children: [
@@ -159,9 +156,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     child: Text(
                                       textAlign: TextAlign.center,
                                       overflow: TextOverflow.ellipsis,
-                                      'Already have an account? login',
-                                      style: AppStyles.medium18White,
-                                      maxLines: 1,
+                                        'Already have an account? login',
+                                        style: AppStyles.medium18White,
+                                        maxLines: 1,
                                     ),
                                   ),
                                 ],
@@ -180,9 +177,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
     );
   }
-
-  void register() {
-    if (formKey.currentState!.validate()) {
+  void register(){
+    if(formKey.currentState!.validate()){
       print("register successfully");
     }
   }

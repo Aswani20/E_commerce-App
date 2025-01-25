@@ -8,6 +8,9 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.whiteColor,
       elevation: 0,
+      iconTheme: IconThemeData(
+          color: AppColors.primaryColor
+      ),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         showUnselectedLabels: false, showSelectedLabels: false, elevation: 0),
