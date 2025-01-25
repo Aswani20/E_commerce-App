@@ -1,4 +1,4 @@
-import 'package:device_preview/device_preview.dart';
+import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:e_commerce_app/core/utils/app_theme.dart';
 import 'package:e_commerce_app/core/utils/app_routes.dart';
 import 'package:e_commerce_app/features/ui/auth/login/login_screen.dart';
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.homeRoute,
+          initialRoute: AppRoutes.loginRoute,
           routes: {
             AppRoutes.loginRoute: (context) => LoginScreen(),
             AppRoutes.registerRoute: (context) => RegisterScreen(),

@@ -2,8 +2,8 @@ import 'package:e_commerce_app/core/utils/app_assets.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_routes.dart';
 import 'package:e_commerce_app/core/utils/app_styles.dart';
-import 'package:e_commerce_app/core/utils/custom_elevated_button.dart';
-import 'package:e_commerce_app/core/utils/custom_text_form_field.dart';
+import 'package:e_commerce_app/features/ui/widgets/custom_elevated_button.dart';
+import 'package:e_commerce_app/features/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

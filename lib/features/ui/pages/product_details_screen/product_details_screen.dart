@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:e_commerce_app/core/utils/app_assets.dart';
@@ -285,7 +286,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           shape:  RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(17.r)),
                           backgroundColor:  AppColors.primaryColor,
-                          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 14.h),
+                          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
                         ),
                         onPressed: (){},
                         child: Row(
@@ -293,9 +294,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           children: [
                             Icon(Icons.add_shopping_cart, color: AppColors.whiteColor,),
                             SizedBox(
-                              width: 24.w,
+                              width: 15.w,
                             ),
-                            Text(
+                            AutoSizeText(
                               "Add To Cart",
                               style: AppStyles.medium20White
                             ),

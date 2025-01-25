@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   List<Widget> bodyList = [
     const HomeTab(),
-    const ProductsTab(),
+    ProductsTab(),
     FavoriteTab(),
     UserTab()
   ];

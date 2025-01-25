@@ -25,7 +25,7 @@ class ProductsTab extends StatelessWidget {
               onTap: () {
                 //todo: navigate to product details screen
               },
-              child: const ProductItem(),
+              child: ProductItem(),
             );
           },
         ))
