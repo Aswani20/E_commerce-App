@@ -3,61 +3,13 @@ import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:e_commerce_app/core/utils/app_assets.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_styles.dart';
+import 'package:e_commerce_app/features/ui/widgets/product_item.dart';
+import 'package:e_commerce_app/features/ui/widgets/product_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  final int initialIndex = 0;
-  final List<Widget> items =  [
-    CachedNetworkImage(
-      imageUrl: 'https://assets.adidas.com/images/w_1880,f_auto,q_auto/6776024790f445b0873ee66fdcde54a1_9366/GX6544_HM3_hover.jpg',
-      imageBuilder: (context, image) => Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(16),
-        height: 300.h,
-        decoration: BoxDecoration(
-          image: DecorationImage(image: image, fit: BoxFit.cover),
-          borderRadius: BorderRadius.circular(15.r),
-        ),
-        alignment: Alignment.topRight,
-        child: IconButton(onPressed: (){},icon: Icon(Icons.favorite),
-        ),
-      ),
-    ),
-    CachedNetworkImage(
-      imageUrl: 'https://assets.adidas.com/images/w_1880,f_auto,q_auto/6776024790f445b0873ee66fdcde54a1_9366/GX6544_HM3_hover.jpg',
-      imageBuilder: (context, image) => Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(16),
-        height: 300.h,
-        decoration: BoxDecoration(
-          image: DecorationImage(image: image, fit: BoxFit.cover),
-          borderRadius: BorderRadius.circular(15.r),
-        ),
-        alignment: Alignment.topRight,
-        child: IconButton(onPressed: (){},icon: Icon(Icons.favorite),
-        ),
-      ),
-    ),
-    CachedNetworkImage(
-      imageUrl: 'https://assets.adidas.com/images/w_1880,f_auto,q_auto/6776024790f445b0873ee66fdcde54a1_9366/GX6544_HM3_hover.jpg',
-      imageBuilder: (context, image) => Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(16),
-        height: 300.h,
-        decoration: BoxDecoration(
-          image: DecorationImage(image: image, fit: BoxFit.cover),
-          borderRadius: BorderRadius.circular(15.r),
-        ),
-        alignment: Alignment.topRight,
-        child: IconButton(onPressed: (){},icon: Icon(Icons.favorite),
-        ),
-      ),
-    ),
-  ];
-
   ProductDetailsScreen({super.key});
 
   @override
@@ -69,14 +21,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   int selected = -1;
   List<int> sizes = [35, 38, 39, 40];
   List<Color> color = [Colors.red, Colors.blueAccent, Colors.green, Colors.yellow,];
-  final CarouselSliderController _controller = CarouselSliderController();
-  late int currentIndex;
 
-  @override
-  void initState() {
-    super.initState();
-    currentIndex = widget.initialIndex;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,39 +55,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  CarouselSlider(
-                    controller: _controller,
-                    items: widget.items,
-                    options: CarouselOptions(
-                      aspectRatio: 199.w/150.h,
-                      initialPage: widget.initialIndex,
-                      enlargeCenterPage: true,
-                      viewportFraction: 1,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          currentIndex = index;
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 8.h),
-                    child: AnimatedSmoothIndicator(
-                      activeIndex: currentIndex,
-                      count: widget.items.length,
-                      duration: const Duration(microseconds: 0),
-                      effect: ExpandingDotsEffect(
-                        dotWidth: 7.w,
-                        dotHeight: 7.h,
-                        dotColor: Colors.grey.shade400,
-                        paintStyle: PaintingStyle.fill,
-                        activeDotColor: AppColors.primaryColor,
-                      ),
-                    ),
-                  ),
+              ProductSlider(
+                initialIndex: 0,
+                items: [
+                  ProductItem(),
+                  ProductItem(),
+                  ProductItem(),
                 ],
               ),
               SizedBox(height: 24.h,),
