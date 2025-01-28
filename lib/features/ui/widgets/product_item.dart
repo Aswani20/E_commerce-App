@@ -1,60 +1,122 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce_app/core/utils/app_assets.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
+import 'package:e_commerce_app/features/ui/widgets/custom_txt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ProductItem extends StatefulWidget {
-  bool isClicked = false;
-  String heartIcon = AppAssets.selectedFavouriteIcon;
-  ProductItem({super.key});
+class ProductItem extends StatelessWidget {
+  const ProductItem({super.key});
 
-  @override
-  State<ProductItem> createState() => _ProductItemState();
-}
-
-class _ProductItemState extends State<ProductItem> {
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: 'https://assets.adidas.com/images/w_1880,f_auto,q_auto/6776024790f445b0873ee66fdcde54a1_9366/GX6544_HM3_hover.jpg',
-      imageBuilder: (context, image) => Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(16),
-        height: 300.h,
-        decoration: BoxDecoration(
-          image: DecorationImage(image: image, fit: BoxFit.cover),
-          borderRadius: BorderRadius.circular(15.r),
-        ),
-        alignment: Alignment.topRight,
-        child: InkWell(
-          // radius: 25,
-          customBorder: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16.r),
+          border: Border.all(color: AppColors.primary30Opacity, width: 2)),
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15.r),
+                child: CachedNetworkImage(
+                  width: 191.w,
+                  height: 120.h,
+                  fit: BoxFit.cover,
+                  imageUrl:
+                      "https://www.nike.sa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw42ccc9ea/nk/a9b/7/6/4/b/1/a9b764b1_834c_413e_aec2_f460112b2de6.jpg?sw=2000&sh=2000&sm=fit",
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.yellowColor,
+                    ),
+                  ),
+                  errorWidget: (context, url, error) => const Icon(
+                    Icons.error,
+                    color: AppColors.redColor,
+                  ),
+                ),
+              ),
+              Positioned(
+                  top: 8.h,
+                  right: 8.w,
+                  child: CircleAvatar(
+                    backgroundColor: AppColors.whiteColor,
+                    radius: 20.r,
+                    child: Center(
+                      child: IconButton(
+                          onPressed: () {
+                            // todo add to favorite
+                          },
+                          color: AppColors.primaryColor,
+                          padding: EdgeInsets.zero,
+                          iconSize: 30.r, // Adjust icon size as needed
+                          icon: const Icon(
+                            Icons.favorite_border_rounded,
+                            color: AppColors.primaryColor,
+                          )),
+                    ),
+                  ))
+            ],
           ),
-          onTap: () {
-            setState(() {
-              widget.isClicked = !widget.isClicked;
-              widget.heartIcon = !widget.isClicked
-                  ? AppAssets.selectedFavouriteIcon
-                  : AppAssets.selectedAddToFavouriteIcon;
-            });
-          },
-          child: Material(
-            // borderRadius: BorderRadius.circular(2),
-            color: AppColors.whiteColor,
-            elevation: 5,
-            shape: const StadiumBorder(),
-            shadowColor: AppColors.blackColor,
-            child: Padding(
-                padding: const EdgeInsets.all(6),
-                child: ImageIcon(
-                  AssetImage(widget.heartIcon),
-                  color: AppColors.primaryColor,
-                )),
-          ),
-        ),
-        ),
-      );
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomTxt(
+                  text: "Nike Air Jordan",
+                  fontSize: 12.sp,
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                CustomTxt(
+                  text: "NIKE SHOES FLEXIBLE FOR MEN",
+                  fontSize: 12.sp,
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                CustomTxt(
+                  text: "EGP 1500",
+                  fontSize: 12.sp,
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                Row(
+                  children: [
+                    CustomTxt(
+                      text: "Review (4.8)",
+                      fontSize: 12.sp,
+                    ),
+                    Icon(
+                      Icons.star,
+                      color: AppColors.yellowColor,
+                      size: 25.sp,
+                    ),
+                    const Spacer(
+                      flex: 1,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        //   todo add to cart
+                      },
+                      splashColor: Colors.transparent,
+                      child: Icon(
+                        Icons.add_circle,
+                        size: 32.sp,
+                        color: AppColors.primaryColor,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
