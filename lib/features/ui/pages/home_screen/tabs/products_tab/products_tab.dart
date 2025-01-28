@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/utils/app_assets.dart';
-import 'package:e_commerce_app/features/ui/widgets/product_item.dart';
+import 'package:e_commerce_app/core/utils/app_routes.dart';
+import 'package:e_commerce_app/features/ui/widgets/product_tab_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,7 +17,7 @@ class ProductsTab extends StatelessWidget {
             child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 2 / 2.7.w,
+              childAspectRatio: 2 / 3.2.h,
               crossAxisSpacing: 16.w,
               mainAxisSpacing: 16.h),
           itemCount: 10,
@@ -24,8 +25,9 @@ class ProductsTab extends StatelessWidget {
             return InkWell(
               onTap: () {
                 //todo: navigate to product details screen
+                Navigator.pushNamed(context, AppRoutes.productRoute);
               },
-              child: ProductItem(),
+              child: const ProductTabItem(),
             );
           },
         ))

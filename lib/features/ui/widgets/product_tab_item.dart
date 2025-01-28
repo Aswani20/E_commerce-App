@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
+import 'package:e_commerce_app/core/utils/app_styles.dart';
 import 'package:e_commerce_app/features/ui/widgets/custom_txt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+class ProductTabItem extends StatelessWidget {
+  const ProductTabItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class ProductItem extends StatelessWidget {
                       "https://www.nike.sa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw42ccc9ea/nk/a9b/7/6/4/b/1/a9b764b1_834c_413e_aec2_f460112b2de6.jpg?sw=2000&sh=2000&sm=fit",
                   placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(
-                      color: AppColors.yellowColor,
+                      color: AppColors.primaryDark,
                     ),
                   ),
                   errorWidget: (context, url, error) => const Icon(
@@ -78,10 +79,19 @@ class ProductItem extends StatelessWidget {
                 SizedBox(
                   height: 1.h,
                 ),
-                CustomTxt(
-                  text: "EGP 1500",
-                  fontSize: 12.sp,
-                ),
+                Row(children: [
+                  const CustomTxt(
+                    text: "EGP 1500",
+                  ),
+                  SizedBox(
+                    width: 8.w,
+                  ),
+                  CustomTxt(
+                    text: "EGP 2000",
+                    textStyle: AppStyles.regular11SalePrice
+                        .copyWith(decoration: TextDecoration.lineThrough),
+                  ),
+                ]),
                 SizedBox(
                   height: 1.h,
                 ),

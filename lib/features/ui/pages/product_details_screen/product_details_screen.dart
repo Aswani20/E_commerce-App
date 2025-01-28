@@ -4,7 +4,7 @@ import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:e_commerce_app/core/utils/app_assets.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_styles.dart';
-import 'package:e_commerce_app/features/ui/widgets/product_item.dart';
+import 'package:e_commerce_app/features/ui/widgets/product_tab_item.dart';
 import 'package:e_commerce_app/features/ui/widgets/product_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,14 +19,25 @@ class ProductDetailsScreen extends StatefulWidget {
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   int productCounter = 0;
-  int selected = -1;
-  List<int> sizes = [35, 38, 39, 40];
-  List<Color> color = [Colors.red, Colors.blueAccent, Colors.green, Colors.yellow,];
+  int selectedColor = -1;
+  int selectedSize = -1;
 
+  List<int> sizes = [35, 38, 39, 40];
+  List<Color> color = [
+    Colors.red,
+    Colors.blueAccent,
+    Colors.green,
+    Colors.yellow,
+  ];
+
+  List<String> productImages = [
+    "https://www.nike.sa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw42ccc9ea/nk/a9b/7/6/4/b/1/a9b764b1_834c_413e_aec2_f460112b2de6.jpg?sw=2000&sh=2000&sm=fit",
+    "https://www.nike.sa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw42ccc9ea/nk/a9b/7/6/4/b/1/a9b764b1_834c_413e_aec2_f460112b2de6.jpg?sw=2000&sh=2000&sm=fit",
+    "https://www.nike.sa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw42ccc9ea/nk/a9b/7/6/4/b/1/a9b764b1_834c_413e_aec2_f460112b2de6.jpg?sw=2000&sh=2000&sm=fit",
+  ];
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)!.settings.arguments as Map;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -58,29 +69,29 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             children: [
               ProductSlider(
                 initialIndex: 0,
-                items: [
-                  ProductItem(),
-                  ProductItem(),
-                  ProductItem(),
-                ],
+                items: productImages,
               ),
-              SizedBox(height: 24.h,),
+              SizedBox(
+                height: 24.h,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                     child: Text(
-                      args["title"],
+                      "title",
                       style: AppStyles.medium18Header,
                     ),
                   ),
                   Text(
-                    "EGP ${args["finalPrice"]}",
+                    "EGP 1500",
                     style: AppStyles.medium18Header,
                   ),
                 ],
               ),
-              SizedBox(height: 16.h,),
+              SizedBox(
+                height: 16.h,
+              ),
               Row(
                 children: [
                   Container(
@@ -138,7 +149,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         SizedBox(
                           width: 18.w,
                         ),
-                        Text(
+                        AutoSizeText(
                           '$productCounter',
                           style: AppStyles.medium18White,
                         ),
@@ -160,7 +171,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   )
                 ],
               ),
-              SizedBox(height: 16.h,),
+              SizedBox(
+                height: 16.h,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -185,38 +198,39 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 16.h,),
+              SizedBox(
+                height: 16.h,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Size',
-                      style: AppStyles.medium18Header
+                  Text('Size', style: AppStyles.medium18Header),
+                  SizedBox(
+                    height: 8.h,
                   ),
-                  SizedBox(height: 8.h,),
                   SizedBox(
                     height: 45.h,
                     child: ListView.separated(
                         scrollDirection: Axis.horizontal,
-                        itemBuilder: (context , index){
+                        itemBuilder: (context, index) {
                           return GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               setState(() {
-                                selected = index;
+                                selectedColor = index;
                               });
                             },
                             child: CircleAvatar(
                               radius: 22.r,
-                              backgroundColor:
-                              index == selected ? AppColors.primaryColor : Colors.transparent,
+                              backgroundColor: index == selectedColor
+                                  ? AppColors.primaryColor
+                                  : Colors.transparent,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 9.w,
-                                    vertical: 9.h
-                                ),
+                                    horizontal: 9.w, vertical: 9.h),
                                 child: Text(
                                   '${sizes[index]}',
                                   style: AppStyles.regular14Text.copyWith(
-                                      color: index == selected
+                                      color: index == selectedColor
                                           ? AppColors.whiteColor
                                           : AppColors.primaryColor),
                                 ),
@@ -224,27 +238,32 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             ),
                           );
                         },
-                        separatorBuilder: (context , index)=>SizedBox(width: 17.w,),
+                        separatorBuilder: (context, index) => SizedBox(
+                              width: 17.w,
+                            ),
                         itemCount: sizes.length),
                   ),
                 ],
               ),
-              SizedBox(height: 24.h,),
+              SizedBox(
+                height: 24.h,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Color',
-                      style: AppStyles.medium18Header),
-                  SizedBox(height: 8.h,),
+                  Text('Color', style: AppStyles.medium18Header),
+                  SizedBox(
+                    height: 8.h,
+                  ),
                   SizedBox(
                     height: 45.h,
                     child: ListView.separated(
                         scrollDirection: Axis.horizontal,
-                        itemBuilder: (context , index){
+                        itemBuilder: (context, index) {
                           return GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               setState(() {
-                                selected = index;
+                                selectedSize = index;
                               });
                             },
                             child: CircleAvatar(
@@ -252,29 +271,38 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               backgroundColor: color[index],
                               child: Align(
                                   alignment: Alignment.center,
-                                  child: Icon(Icons.check , color: index == selected ? AppColors.whiteColor : Colors.transparent,)),
+                                  child: Icon(
+                                    Icons.check,
+                                    color: index == selectedSize
+                                        ? AppColors.whiteColor
+                                        : Colors.transparent,
+                                  )),
                             ),
                           );
                         },
-                        separatorBuilder: (context , index)=>SizedBox(width: 17.w,),
+                        separatorBuilder: (context, index) => SizedBox(
+                              width: 17.w,
+                            ),
                         itemCount: color.length),
                   ),
                 ],
               ),
-              SizedBox(height: 48.h,),
+              SizedBox(
+                height: 48.h,
+              ),
               Row(
                 children: [
                   Column(
                     children: [
                       Text(
                         'Total price',
-                        style: AppStyles.medium18Header.copyWith(color: AppColors.primaryColor.withOpacity(0.6)),
+                        style: AppStyles.medium18Header.copyWith(
+                            color: AppColors.primaryColor.withOpacity(0.6)),
                       ),
                       SizedBox(
                         height: 12.h,
                       ),
-                      Text('EGP 3,500',
-                          style: AppStyles.medium18Header)
+                      Text('EGP 3,500', style: AppStyles.medium18Header)
                     ],
                   ),
                   SizedBox(
@@ -283,23 +311,25 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   Expanded(
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          shape:  RoundedRectangleBorder(
+                          shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(17.r)),
-                          backgroundColor:  AppColors.primaryColor,
-                          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
+                          backgroundColor: AppColors.primaryColor,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 14.w, vertical: 14.h),
                         ),
-                        onPressed: (){},
+                        onPressed: () {},
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.add_shopping_cart, color: AppColors.whiteColor,),
+                            Icon(
+                              Icons.add_shopping_cart,
+                              color: AppColors.whiteColor,
+                            ),
                             SizedBox(
                               width: 15.w,
                             ),
-                            AutoSizeText(
-                              "Add To Cart",
-                              style: AppStyles.medium20White
-                            ),
+                            AutoSizeText("Add To Cart",
+                                style: AppStyles.medium20White),
                             SizedBox(
                               width: 27.w,
                             ),

@@ -24,11 +24,10 @@ class _FavoriteItemState extends State<FavoriteItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 24.h),
+      padding: EdgeInsets.only(top: 10.h),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, AppRoutes.productRoute,
-              arguments: widget.product);
+          Navigator.pushNamed(context, AppRoutes.productRoute);
         },
         child: Container(
           height: 135.h,
@@ -144,8 +143,12 @@ class _FavoriteItemState extends State<FavoriteItem> {
                           SizedBox(
                             width: 100.w,
                             height: 36.h,
-                            child: CustomElevatedButton(text: "Add To Cart", onPressed: (){}, backgroundColor: AppColors.primaryColor, textStyle:  AppStyles.medium14Category
-                                .copyWith(color: AppColors.whiteColor)),
+                            child: CustomElevatedButton(
+                                text: "Add To Cart",
+                                onPressed: () {},
+                                backgroundColor: AppColors.primaryColor,
+                                textStyle: AppStyles.medium14Category
+                                    .copyWith(color: AppColors.whiteColor)),
                           )
                         ],
                       ),
@@ -160,4 +163,3 @@ class _FavoriteItemState extends State<FavoriteItem> {
     );
   }
 }
-

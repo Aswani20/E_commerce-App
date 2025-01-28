@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             AppRoutes.registerRoute: (context) => RegisterScreen(),
             AppRoutes.homeRoute: (context) => const HomeScreen(),
             AppRoutes.cartRoute: (context) => const CartScreen(),
-            AppRoutes.productRoute: (context) =>  ProductDetailsScreen(),
+            AppRoutes.productRoute: (context) => ProductDetailsScreen(),
           },
           theme: AppTheme.lightTheme,
         );

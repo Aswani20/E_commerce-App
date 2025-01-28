@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
+import 'package:e_commerce_app/core/utils/app_routes.dart';
 import 'package:e_commerce_app/features/ui/widgets/custom_txt.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,32 +18,39 @@ class _CartItemState extends State<CartItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-      child: Container(
-        height: 142.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(18.r),
-          border: Border.all(color: AppColors.primary30Opacity, width: 1),
-        ),
-        child: Row(
-          children: [
-            _buildImageContainer(),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 12.h),
-                child: Column(
-                  children: [
-                    _buildItemHeader(),
-                    SizedBox(height: 5.h),
-                    _buildItemDetails(),
-                    SizedBox(height: 5.h),
-                    _buildItemPrice(),
-                  ],
+    return InkWell(
+      onTap: () {
+        //todo: navigate to product detail screen
+        Navigator.pushNamed(context, AppRoutes.productRoute);
+      },
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+        child: Container(
+          height: 142.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18.r),
+            border: Border.all(color: AppColors.primary30Opacity, width: 1),
+          ),
+          child: Row(
+            children: [
+              _buildImageContainer(),
+              Expanded(
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 8.w, vertical: 12.h),
+                  child: Column(
+                    children: [
+                      _buildItemHeader(),
+                      SizedBox(height: 5.h),
+                      _buildItemDetails(),
+                      SizedBox(height: 5.h),
+                      _buildItemPrice(),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
