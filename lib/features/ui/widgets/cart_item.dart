@@ -116,9 +116,10 @@ class _CartItemState extends State<CartItem> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const CustomTxt(
+        CustomTxt(
           text: "Egp 3,500",
           fontWeight: FontWeight.bold,
+          fontSize: 18.sp,
         ),
         _buildQuantityControl(),
       ],
@@ -151,7 +152,7 @@ class _CartItemState extends State<CartItem> {
           ),
           CustomTxt(
             text: "$itemCount",
-            fontSize: 18.sp,
+            fontSize: 14.sp,
             fontWeight: FontWeight.bold,
             fontColor: AppColors.whiteColor,
           ),
