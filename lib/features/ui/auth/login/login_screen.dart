@@ -8,6 +8,7 @@ import 'package:e_commerce_app/features/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
 class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -71,9 +72,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 if (value == null || value.trim().isEmpty) {
                                   return 'please enter your user name';
                                 }
-                                bool userNameValid =
-                                    RegExp(r"^[A-Za-z][A-Za-z0-9_]{5,29}$")
-                                        .hasMatch(value);
+                                bool userNameValid = RegExp(
+                                    r"^[A-Za-z][A-Za-z0-9_]{5,29}$")
+                                    .hasMatch(value);
                                 if (!userNameValid) {
                                   return 'Invalid ex: Julia Or Laasya_Setty';
                                 }
@@ -102,45 +103,41 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }
                                 return null;
                               },
-                              suffixIcon: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.visibility_off)),
+                              suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.visibility_off)),
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: (){},
                               child: Text(
-                                'Forgot Password',
-                                style: AppStyles.regular18White,
-                                textAlign: TextAlign.end,
-                              ),
-                            ),
-                            CustomElevatedButton(
-                                text: "Login",
-                                onPressed: () {
-                                  login();
-                                }),
+                              'Forgot Password',
+                              style: AppStyles.regular18White,
+                              textAlign: TextAlign.end,
+                            ),),
                             Padding(
-                                padding: EdgeInsets.only(top: 30.h),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.pushReplacementNamed(
-                                        context, AppRoutes.registerRoute);
-                                    setState(
-                                      () {},
-                                    );
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          'Don’t have an account? Create Account',
-                                          style: AppStyles.medium18White,
-                                          textAlign: TextAlign.center,
-                                        ),
+                              padding: EdgeInsets.only(top: 35.h),
+                              child: CustomElevatedButton(backgroundColor: AppColors.whiteColor ,textStyle: AppStyles.semi20Primary,text: "Login", onPressed: (){login();}),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 30.h),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pushReplacementNamed(context, AppRoutes.registerRoute);
+                                  setState(() {
+                                  },);
+                                },
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        'Don’t have an account? Create Account',
+                                        style: AppStyles.medium18White,
+                                        textAlign: TextAlign.center,
                                       ),
-                                    ],
-                                  ),
-                                ))
+                                    ),
+                                  ],
+                                ),
+                              )
+
+                            )
                           ],
                         ),
                       ),
@@ -155,8 +152,8 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void login() {
-    if (formKey.currentState!.validate()) {
+  void login(){
+    if(formKey.currentState!.validate()){
       Navigator.pushReplacementNamed(context, AppRoutes.homeRoute);
       print("login Successfully");
     }
