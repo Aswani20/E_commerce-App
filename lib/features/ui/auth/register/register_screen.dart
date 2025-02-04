@@ -6,6 +6,7 @@ import 'package:e_commerce_app/features/ui/widgets/custom_elevated_button.dart';
 import 'package:e_commerce_app/features/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:e_commerce_app/core/utils/validators.dart';
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({super.key});
@@ -59,12 +60,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             hintStyle: AppStyles.light18HintText,
                             filledColor: AppColors.whiteColor,
                             controller: fullNameController,
-                            validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
-                                return 'please enter your full name';
-                              }
-                              return null;
-                            },
+                            validator: AppValidators.validateFullName ,
                           ),
                           Text(
                             "Mobile Number",
@@ -78,16 +74,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             hintStyle: AppStyles.light18HintText,
                             filledColor: AppColors.whiteColor,
                             controller: phoneController,
-                            validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
-                                return 'please enter your mobile number';
-                              }
-                              if(value.length < 11){
-                                return 'Number Should be 11 number';
-                              }
-
-                              return null;
-                            },
+                            validator: AppValidators.validatePhoneNumber
                           ),
                           Text(
                             "E-mail address",
@@ -101,18 +88,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             hintStyle: AppStyles.light18HintText,
                             filledColor: AppColors.whiteColor,
                             controller: mailController,
-                            validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
-                                return 'please enter your email address';
-                              }
-                              bool emailValid = RegExp(
-                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                  .hasMatch(value);
-                              if (!emailValid) {
-                                return 'invalid email';
-                              }
-                              return null;
-                            },
+                            validator:
+AppValidators.validateEmail
                           ),
                           Text(
                             "Password",
@@ -126,16 +103,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             hintStyle: AppStyles.light18HintText,
                             filledColor: AppColors.whiteColor,
                             controller: passwordController,
-                            validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
-                                return 'please enter password';
-                              }
-                              if (value.trim().length < 6 ||
-                                  value.trim().length > 30) {
-                                return 'password should be >6 & <30';
-                              }
-                              return null;
-                            },
+                            validator: 
+AppValidators.validatePassword,
                             suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.visibility_off)),
                           ),
                           Padding(
