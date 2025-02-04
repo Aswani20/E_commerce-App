@@ -7,7 +7,7 @@ import 'package:e_commerce_app/features/ui/widgets/custom_elevated_button.dart';
 import 'package:e_commerce_app/features/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:e_commerce_app/core/utils/validators.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -68,18 +68,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               hintStyle: AppStyles.light18HintText,
                               filledColor: AppColors.whiteColor,
                               controller: userNameController,
-                              validator: (value) {
-                                if (value == null || value.trim().isEmpty) {
-                                  return 'please enter your user name';
-                                }
-                                bool userNameValid = RegExp(
-                                    r"^[A-Za-z][A-Za-z0-9_]{5,29}$")
-                                    .hasMatch(value);
-                                if (!userNameValid) {
-                                  return 'Invalid ex: Julia Or Laasya_Setty';
-                                }
-                                return null;
-                              },
+                              validator: 
+AppValidators.validateEmail
                             ),
                             Text(
                               "Password",
@@ -93,16 +83,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               hintStyle: AppStyles.light18HintText,
                               filledColor: AppColors.whiteColor,
                               controller: passwordController,
-                              validator: (value) {
-                                if (value == null || value.trim().isEmpty) {
-                                  return 'please enter password';
-                                }
-                                if (value.trim().length < 6 ||
-                                    value.trim().length > 30) {
-                                  return 'password should be >6 & <30';
-                                }
-                                return null;
-                              },
+                              validator: 
+AppValidators.validatePassword
+,
                               suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.visibility_off)),
                             ),
                             InkWell(
