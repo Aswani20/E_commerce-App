@@ -60,37 +60,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             hintStyle: AppStyles.light18HintText,
                             filledColor: AppColors.whiteColor,
                             controller: fullNameController,
-                            validator: AppValidators.validateFullName ,
+                            validator: AppValidators.validateFullName,
                           ),
                           Text(
                             "Mobile Number",
                             style: AppStyles.medium18White,
                           ),
                           CustomTextFormField(
-                            isPassword: false,
-                            keyboardType: TextInputType.phone,
-                            isObscureText: false,
-                            hintText: "enter your mobile number",
-                            hintStyle: AppStyles.light18HintText,
-                            filledColor: AppColors.whiteColor,
-                            controller: phoneController,
-                            validator: AppValidators.validatePhoneNumber
-                          ),
+                              isPassword: false,
+                              keyboardType: TextInputType.phone,
+                              isObscureText: false,
+                              hintText: "enter your mobile number",
+                              hintStyle: AppStyles.light18HintText,
+                              filledColor: AppColors.whiteColor,
+                              controller: phoneController,
+                              validator: AppValidators.validatePhoneNumber),
                           Text(
                             "E-mail address",
                             style: AppStyles.medium18White,
                           ),
                           CustomTextFormField(
-                            isPassword: false,
-                            keyboardType: TextInputType.emailAddress,
-                            isObscureText: false,
-                            hintText: "enter your email address",
-                            hintStyle: AppStyles.light18HintText,
-                            filledColor: AppColors.whiteColor,
-                            controller: mailController,
-                            validator:
-AppValidators.validateEmail
-                          ),
+                              isPassword: false,
+                              keyboardType: TextInputType.emailAddress,
+                              isObscureText: false,
+                              hintText: "enter your email address",
+                              hintStyle: AppStyles.light18HintText,
+                              filledColor: AppColors.whiteColor,
+                              controller: mailController,
+                              validator: AppValidators.validateEmail),
                           Text(
                             "Password",
                             style: AppStyles.medium18White,
@@ -103,21 +100,27 @@ AppValidators.validateEmail
                             hintStyle: AppStyles.light18HintText,
                             filledColor: AppColors.whiteColor,
                             controller: passwordController,
-                            validator: 
-AppValidators.validatePassword,
-                            suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.visibility_off)),
+                            validator: AppValidators.validatePassword,
+                            suffixIcon: IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.visibility_off)),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 35.h),
-                            child: CustomElevatedButton(backgroundColor: AppColors.whiteColor ,textStyle: AppStyles.semi20Primary,text: "Sign up", onPressed: (){register();}),
+                            child: CustomElevatedButton(
+                                backgroundColor: AppColors.whiteColor,
+                                textStyle: AppStyles.semi20Primary,
+                                text: "Sign up",
+                                onPressed: () {
+                                  register();
+                                }),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 30.h, bottom: 30.h),
                             child: GestureDetector(
                               onTap: () {
-                                Navigator.pushReplacementNamed(context, AppRoutes.loginRoute);
-                                setState(() {
-                                });
+                                Navigator.pushReplacementNamed(
+                                    context, AppRoutes.loginRoute);
                               },
                               child: Row(
                                 children: [
@@ -125,9 +128,9 @@ AppValidators.validatePassword,
                                     child: Text(
                                       textAlign: TextAlign.center,
                                       overflow: TextOverflow.ellipsis,
-                                        'Already have an account? login',
-                                        style: AppStyles.medium18White,
-                                        maxLines: 1,
+                                      'Already have an account? login',
+                                      style: AppStyles.medium18White,
+                                      maxLines: 1,
                                     ),
                                   ),
                                 ],
@@ -146,8 +149,9 @@ AppValidators.validatePassword,
       ),
     );
   }
-  void register(){
-    if(formKey.currentState!.validate()){
+
+  void register() {
+    if (formKey.currentState!.validate()) {
       print("register successfully");
     }
   }

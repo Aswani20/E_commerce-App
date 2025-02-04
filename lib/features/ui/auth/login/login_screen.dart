@@ -61,16 +61,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               style: AppStyles.medium18White,
                             ),
                             CustomTextFormField(
-                              isPassword: false,
-                              keyboardType: TextInputType.text,
-                              isObscureText: false,
-                              hintText: "enter your name",
-                              hintStyle: AppStyles.light18HintText,
-                              filledColor: AppColors.whiteColor,
-                              controller: userNameController,
-                              validator: 
-AppValidators.validateEmail
-                            ),
+                                isPassword: false,
+                                keyboardType: TextInputType.text,
+                                isObscureText: false,
+                                hintText: "enter your name",
+                                hintStyle: AppStyles.light18HintText,
+                                filledColor: AppColors.whiteColor,
+                                controller: userNameController,
+                                validator: AppValidators.validateEmail),
                             Text(
                               "Password",
                               style: AppStyles.medium18White,
@@ -83,44 +81,48 @@ AppValidators.validateEmail
                               hintStyle: AppStyles.light18HintText,
                               filledColor: AppColors.whiteColor,
                               controller: passwordController,
-                              validator: 
-AppValidators.validatePassword
-,
-                              suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.visibility_off)),
+                              validator: AppValidators.validatePassword,
+                              suffixIcon: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(Icons.visibility_off)),
                             ),
                             InkWell(
-                              onTap: (){},
+                              onTap: () {},
                               child: Text(
-                              'Forgot Password',
-                              style: AppStyles.regular18White,
-                              textAlign: TextAlign.end,
-                            ),),
-                            Padding(
-                              padding: EdgeInsets.only(top: 35.h),
-                              child: CustomElevatedButton(backgroundColor: AppColors.whiteColor ,textStyle: AppStyles.semi20Primary,text: "Login", onPressed: (){login();}),
+                                'Forgot Password',
+                                style: AppStyles.regular18White,
+                                textAlign: TextAlign.end,
+                              ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: 30.h),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.pushReplacementNamed(context, AppRoutes.registerRoute);
-                                  setState(() {
-                                  },);
-                                },
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        'Don’t have an account? Create Account',
-                                        style: AppStyles.medium18White,
-                                        textAlign: TextAlign.center,
+                              padding: EdgeInsets.only(top: 35.h),
+                              child: CustomElevatedButton(
+                                  backgroundColor: AppColors.whiteColor,
+                                  textStyle: AppStyles.semi20Primary,
+                                  text: "Login",
+                                  onPressed: () {
+                                    login();
+                                  }),
+                            ),
+                            Padding(
+                                padding: EdgeInsets.only(top: 30.h),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushReplacementNamed(
+                                        context, AppRoutes.registerRoute);
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Don’t have an account? Create Account',
+                                          style: AppStyles.medium18White,
+                                          textAlign: TextAlign.center,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              )
-
-                            )
+                                    ],
+                                  ),
+                                ))
                           ],
                         ),
                       ),
@@ -135,8 +137,8 @@ AppValidators.validatePassword
     );
   }
 
-  void login(){
-    if(formKey.currentState!.validate()){
+  void login() {
+    if (formKey.currentState!.validate()) {
       Navigator.pushReplacementNamed(context, AppRoutes.homeRoute);
       print("login Successfully");
     }
