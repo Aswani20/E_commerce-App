@@ -4,9 +4,7 @@ class AppValidators {
   static String? validateEmail(String? val) {
     RegExp emailRegex = RegExp(
         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-    if (val == null) {
-      return 'this field is required';
-    } else if (val.trim().isEmpty) {
+    if (val == null || val.trim().isEmpty) {
       return 'this field is required';
     } else if (emailRegex.hasMatch(val) == false) {
       return 'enter valid email';
@@ -17,9 +15,7 @@ class AppValidators {
 
   static String? validatePassword(String? val) {
     RegExp passwordRegex = RegExp(r'^(?=.*[a-zA-Z])(?=.*[0-9])');
-    if (val == null) {
-      return 'this field is required';
-    } else if (val.isEmpty) {
+    if (val == null || val.isEmpty) {
       return 'this field is required';
     } else if (val.length < 8 || !passwordRegex.hasMatch(val)) {
       return 'strong password please';
@@ -32,7 +28,7 @@ class AppValidators {
     if (val == null || val.isEmpty) {
       return 'this field is required';
     } else if (val != password) {
-      return 'same password';
+      return 'Passwords not matching';
     } else {
       return null;
     }
@@ -40,9 +36,7 @@ class AppValidators {
 
   static String? validateUsername(String? val) {
     RegExp usernameRegex = RegExp(r'^[a-zA-Z0-9,.-]+$');
-    if (val == null) {
-      return 'this field is required';
-    } else if (val.isEmpty) {
+    if (val == null || val.isEmpty) {
       return 'this field is required';
     } else if (!usernameRegex.hasMatch(val)) {
       return 'enter valid username';
@@ -50,6 +44,7 @@ class AppValidators {
       return null;
     }
   }
+
   static String? validateFullName(String? val) {
     if (val == null || val.isEmpty) {
       return 'this field is required';
@@ -57,7 +52,6 @@ class AppValidators {
       return null;
     }
   }
-
 
   static String? validatePhoneNumber(String? val) {
     if (val == null) {
@@ -70,8 +64,4 @@ class AppValidators {
       return null;
     }
   }
-
-
-
-
 }

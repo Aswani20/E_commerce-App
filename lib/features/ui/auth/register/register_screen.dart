@@ -20,6 +20,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController mailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController rePasswordController = TextEditingController();
+
   var formKey = GlobalKey<FormState>();
 
   @override
@@ -101,9 +103,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             filledColor: AppColors.whiteColor,
                             controller: passwordController,
                             validator: AppValidators.validatePassword,
-                            suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.visibility_off)),
+                          ),
+                          Text(
+                            "RePassword",
+                            style: AppStyles.medium18White,
+                          ),
+                          CustomTextFormField(
+                            isPassword: true,
+                            keyboardType: TextInputType.visiblePassword,
+                            isObscureText: true,
+                            hintText: "enter your password again",
+                            hintStyle: AppStyles.light18HintText,
+                            filledColor: AppColors.whiteColor,
+                            controller: rePasswordController,
+                            validator: (value) {
+                              return AppValidators.validateConfirmPassword(
+                                  value, passwordController.text);
+                            },
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 35.h),
