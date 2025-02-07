@@ -1,5 +1,8 @@
+import 'package:bloc/bloc.dart';
 import 'package:e_commerce_app/core/utils/app_theme.dart';
 import 'package:e_commerce_app/core/utils/app_routes.dart';
+import 'package:e_commerce_app/core/utils/my_bloc_observer.dart';
+import 'package:e_commerce_app/di/di.dart';
 import 'package:e_commerce_app/features/ui/auth/login/login_screen.dart';
 import 'package:e_commerce_app/features/ui/auth/register/register_screen.dart';
 import 'package:e_commerce_app/features/ui/pages/cart_screen/cart_screen.dart';
@@ -9,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
+  configureDependencies();
+  Bloc.observer = MyBlocObserver();
   runApp(MyApp());
 }
 
