@@ -7,6 +7,7 @@ import 'package:injectable/injectable.dart';
 @injectable
 class RegisterViewModel extends Cubit<RegisterStates> {
   RegisterUseCase registerUseCase;
+
   RegisterViewModel({required this.registerUseCase})
       : super(RegisterInitialState());
 
