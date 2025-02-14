@@ -1,7 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_routes.dart';
-import 'package:e_commerce_app/features/ui/widgets/custom_txt.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -88,7 +88,15 @@ class _CartItemState extends State<CartItem> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const CustomTxt(text: "NIKE AIR JORDAN"),
+        AutoSizeText(
+          "NIKE AIR JORDAN",
+          maxLines: 1,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 18.sp,
+              ),
+        ),
         InkWell(
           onTap: () {
             // TODO: delete item from cart
@@ -111,10 +119,14 @@ class _CartItemState extends State<CartItem> {
           radius: 10.r,
         ),
         SizedBox(width: 10.w),
-        CustomTxt(
-          text: "black | size 40",
-          fontColor: AppColors.blackColor.withOpacity(0.4),
-          fontSize: 14.sp,
+        AutoSizeText(
+          "black | size 40",
+          maxLines: 1,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: AppColors.primaryDarkLight,
+                fontWeight: FontWeight.w500,
+                fontSize: 14.sp,
+              ),
         ),
       ],
     );
@@ -124,10 +136,14 @@ class _CartItemState extends State<CartItem> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CustomTxt(
-          text: "Egp 3,500",
-          fontWeight: FontWeight.bold,
-          fontSize: 18.sp,
+        AutoSizeText(
+          "Egp 3,500",
+          maxLines: 1,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 18.sp,
+              ),
         ),
         _buildQuantityControl(),
       ],
@@ -158,11 +174,14 @@ class _CartItemState extends State<CartItem> {
               size: 25.sp,
             ),
           ),
-          CustomTxt(
-            text: "$itemCount",
-            fontSize: 14.sp,
-            fontWeight: FontWeight.bold,
-            fontColor: AppColors.whiteColor,
+          AutoSizeText(
+            "$itemCount",
+            maxLines: 1,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: AppColors.whiteColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14.sp,
+                ),
           ),
           IconButton(
             onPressed: () {

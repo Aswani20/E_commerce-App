@@ -1,7 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/features/ui/widgets/cart_item.dart';
 import 'package:e_commerce_app/features/ui/widgets/custom_badge.dart';
-import 'package:e_commerce_app/features/ui/widgets/custom_txt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -35,8 +35,23 @@ class CartScreen extends StatelessWidget {
         children: [
           Column(
             children: [
-              const CustomTxt(text: "Total Price"),
-              CustomTxt(text: "$price", fontWeight: FontWeight.bold),
+              AutoSizeText(
+                "Total Price",
+                maxLines: 1,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: AppColors.primaryColor,
+                      fontSize: 18.sp,
+                    ),
+              ),
+              AutoSizeText(
+                "$price",
+                maxLines: 1,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: AppColors.primaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.sp,
+                    ),
+              ),
             ],
           ),
           SizedBox(
@@ -52,8 +67,16 @@ class CartScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const CustomTxt(
-                          text: "Check Out", fontColor: AppColors.whiteColor),
+                      AutoSizeText(
+                        "Check Out",
+                        maxLines: 1,
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  color: AppColors.whiteColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.sp,
+                                ),
+                      ),
                       Icon(
                         Icons.arrow_forward,
                         color: AppColors.whiteColor,

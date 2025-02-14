@@ -7,6 +7,7 @@ import 'package:e_commerce_app/core/utils/dialog_utils.dart';
 import 'package:e_commerce_app/di/di.dart';
 import 'package:e_commerce_app/features/ui/auth/login/cubit/login_states.dart';
 import 'package:e_commerce_app/features/ui/auth/login/login_view_model.dart';
+import 'package:e_commerce_app/features/ui/pages/home_screen/home_screen.dart';
 import 'package:e_commerce_app/features/ui/widgets/custom_elevated_button.dart';
 import 'package:e_commerce_app/features/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,9 @@ class _LoginScreenState extends State<LoginScreen> {
               message: "Login Successfully",
               context: context,
               posActionName: "Ok",
+              posAction: () {
+                Navigator.of(context).pushReplacementNamed(AppRoutes.homeRoute);
+              },
               title: "Success");
         }
       },

@@ -14,9 +14,9 @@ class LoginViewModel extends Cubit<LoginStates> {
 
   // todo: hold data
   TextEditingController userNameController =
-      TextEditingController(text: "Adekheel@gmail.com");
+      TextEditingController(text: "adasdfvv@fds.com");
   TextEditingController passwordController =
-      TextEditingController(text: "18061717");
+      TextEditingController(text: "18061717@A");
   var formKey = GlobalKey<FormState>();
   // todo: handle logic
   void login() async {

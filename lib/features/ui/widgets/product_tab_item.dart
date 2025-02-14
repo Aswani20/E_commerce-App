@@ -1,7 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_styles.dart';
-import 'package:e_commerce_app/features/ui/widgets/custom_txt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -65,31 +65,49 @@ class ProductTabItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomTxt(
-                  text: "Nike Air Jordan",
-                  fontSize: 12.sp,
+                AutoSizeText(
+                  "Nike Air Jordan",
+                  maxLines: 1,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12.sp,
+                      ),
                 ),
                 SizedBox(
                   height: 2.h,
                 ),
-                CustomTxt(
-                  text: "NIKE SHOES FLEXIBLE FOR MEN",
-                  fontSize: 12.sp,
+                AutoSizeText(
+                  "NIKE SHOES FLEXIBLE FOR MEN",
+                  maxLines: 1,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12.sp,
+                      ),
                 ),
                 SizedBox(
                   height: 1.h,
                 ),
                 Row(children: [
-                  const CustomTxt(
-                    text: "EGP 1500",
+                  AutoSizeText(
+                    "EGP 1500",
+                    maxLines: 1,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12.sp,
+                        ),
                   ),
                   SizedBox(
                     width: 8.w,
                   ),
-                  CustomTxt(
-                    text: "EGP 2000",
-                    textStyle: AppStyles.regular11SalePrice
-                        .copyWith(decoration: TextDecoration.lineThrough),
+                  AutoSizeText(
+                    "EGP 2000",
+                    maxLines: 1,
+                    style: AppStyles.regular11SalePrice.copyWith(
+                        color: AppColors.discountTextColor,
+                        decoration: TextDecoration.lineThrough),
                   ),
                 ]),
                 SizedBox(
@@ -97,9 +115,14 @@ class ProductTabItem extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    CustomTxt(
-                      text: "Review (4.8)",
-                      fontSize: 12.sp,
+                    AutoSizeText(
+                      "Review (4.8)",
+                      maxLines: 1,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: AppColors.primaryColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12.sp,
+                          ),
                     ),
                     Icon(
                       Icons.star,
